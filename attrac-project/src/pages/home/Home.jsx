@@ -1,6 +1,6 @@
 import { Link } from "react-router"
 import s from './home.module.scss'
-import Slider from "../../slide/Slide"
+import Slider from "../../components/slide/Slide"
 import { useState } from "react";
 
 export const Home = () => {

@@ -1,5 +1,6 @@
 import React from 'react'
 import s from './attraction.module.scss'
+import Pagination from '../../components/pagination/Pagination'
 
 const Attraction = () => {
   return (
@@ -10,7 +11,7 @@ const Attraction = () => {
            <div className={s.content__container}>
                <h1 className={s.content__title}>Самые популярные достопримечательности</h1>
                <div className={s.content}>
-
+                <Pagination />
                </div>
            </div>
            <div className={s.pagination}></div> 
@@ -38,7 +39,6 @@ const Attraction = () => {
                            <div className={s.comment__wrap}>
                                <h2 className={s.comment__title}>Отзывы</h2>
                                <div className={s.comment__content}>
-
                                </div>
                            </div>
                        </div>
@@ -49,5 +49,4 @@ const Attraction = () => {
     </div>
   )
 }
-
 export default Attraction;

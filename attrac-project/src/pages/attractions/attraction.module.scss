@@ -1,0 +1,120 @@
+.content {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    &__container{
+        max-width: 1220px;
+        margin: 0 auto;
+    }
+    &__title{
+        text-align: center;
+    }
+  }
+  
+  p, h2 {margin: 0;}
+  
+  .pagination {
+    text-align: center;
+    margin-top: 20px;
+    & button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    outline: 1px solid #494a4f;
+    border-radius: 1px;
+    border: none;
+  }
+  
+}
+  
+  .hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+  
+  .loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .hidden{
+    display: none;
+  }
+
+  .find{
+    display: flex;
+    justify-content: center;
+    &__container{
+        max-width: 1220px;
+        margin: 0 auto;
+    }
+    &__wrap{
+
+    }
+    &__finder{
+        
+    }
+    &__sub-title{
+        display: flex;
+        justify-content: center;
+        @media (max-width: 395px) {
+            font-size: 18px;
+        }
+    }
+    &__input{
+        width: 350px;
+        height: 50px;
+        border-radius: 10px;
+        padding-left: 20px;
+        border: 1px solid gray;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        @media (max-width: 640px) {
+            width: 200px;
+        }
+        @media (max-width: 456px) {
+            width: 100px;
+        }
+    }
+    &__block{
+        display: flex;
+        gap: 10px;
+        align-items: center;   
+        justify-content: center;
+        @media (max-width: 640px) {
+            gap: 5px;
+        }
+        &-card{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            @media (max-width: 540px) {
+                max-width: 500px;
+            }
+        }
+        
+    }
+    &__label{
+        margin-left: 50px;
+        @media (max-width: 661px) {
+            margin-left: 25px;
+        }
+        @media (max-width: 540px) {
+            margin-left: 5px;
+        }
+        @media (max-width: 357px) {
+            margin-left: 2px;
+            font-size: 14px;
+        }
+    }
+}

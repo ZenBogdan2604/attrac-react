@@ -1,6 +1,7 @@
 import React from 'react'
 import s from './attraction.module.scss'
 import Pagination from '../../components/pagination/Pagination'
+import SearchFilter from '../../components/serchFilter/SearchFilter'
 
 const Attraction = () => {
   return (
@@ -20,19 +21,9 @@ const Attraction = () => {
                    <div className={s.find__finder}>
                        <h2 className={s.find__sub_title}>Все достопремичательности</h2>
                        <div className={s.find__block}>
-                           <input type="text" id="searchInfo" className={s.find__input} placeholder="Поиск" />
-                           <label htmlFor="searchInfo" className={s.find__label}>Сортировка по</label>
-                           <select name="card-finder" id="card-finder">
-                               <option value="">всем</option>
-                               <option value="park">паркам</option>
-                               <option value="building">постройкам</option>
-                           </select>
+                           
+                           <SearchFilter />
                        </div>
-                   </div>
-                   <div className={s.find__block_card}>
-                       <section className={s.section}>
-                           <button className={s.section__button}>Связаться с нами</button>
-                       </section>
                    </div>
                    <section className={s.comment}>
                        <div className={s.comment__container}>

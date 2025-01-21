@@ -10,39 +10,35 @@ const getData = async (page, itemsPerPage) => {
   return data;
 };
 
-
+const getAllData = async () => {
+  const response = await fetch(API_URL);
+  const data = await response.json();
+  return data.length; 
+};
 
 const Pagination = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
-  const[length, setLength] = useState(0)
-  const [totalPages, setTotalPages ] = useState(Math.ceil(length.length / itemsPerPage))
-   // Количество элементов на странице
+  const itemsPerPage = 4;
+  const [totalPages, setTotalPages] = useState(0); 
 
- 
-
-  // Используем useQuery для загрузки данных
   const { data, isLoading } = useQuery({
-    queryKey: ['items', currentPage], // Ключ запроса зависит от currentPage
+    queryKey: ['items', currentPage], 
     queryFn: () => getData(currentPage, itemsPerPage),
   });
 
-  const getAllData = async () => {
-    const response = await fetch(`${API_URL}`);
-    const data = await response.json();
-    setLength(data.length);
-  };
   useEffect(() => {
-    getAllData()
-    
-  }, [])
-  // Если данные загружаются, показываем индикатор загрузки
+    const fetchTotalItems = async () => {
+      const totalItems = await getAllData();
+      setTotalPages(Math.ceil(totalItems / itemsPerPage)); 
+    };
+
+    fetchTotalItems();
+  }, []);
+
   if (isLoading) {
     return <div className={s.loading}>Loading...</div>;
   }
 
-  // const totalPages = Math.ceil(length.length / itemsPerPage); // Предполагаем, что всего 50 элементов
- console.log(length)
   return (
     <div>
       <div className={s.content}>
@@ -58,7 +54,6 @@ const Pagination = () => {
         ))}
       </div>
 
-      {/* Пагинация */}
       <div className={s.pagination}>
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
           <button

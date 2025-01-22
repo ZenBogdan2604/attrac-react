@@ -1,172 +1,185 @@
-.header{
-    &__container{
-       max-width: 1220px;
-       margin-left: 20px;
-       margin-right: 20px;
-       margin: 0 auto;
-       position: relative;
-       @media (max-width:1220px) {
+.header {
+    &__container {
+        max-width: 1220px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+
+        @media (max-width: 1220px) {
             max-width: 800px;
-       }
-       @media (max-width:815px) {
+        }
+
+        @media (max-width: 815px) {
             max-width: 600px;
-       }
-       @media (max-width:600px) {
-            max-width: 400px;
-       }
+        }
+
+        @media (max-width: 600px) {
+            max-width: 100%;
+            padding: 0 10px;
+        }
     }
-    &__wrap{
+
+    &__wrap {
         padding-top: 20px;
         padding-bottom: 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-    &__logo-block{
+
+    &__logo_block {
         display: flex;
-        justify-content: space-between;
         align-items: center;
         gap: 10px;
     }
-    &__logo{
+
+    &__logo {
         width: 40px;
     }
-    &__name{
+
+    &__name {
         color: #BC9CFF;
         font-size: 24px;
+        text-decoration: none;
     }
-    &__menu{
+
+    &__menu {
         display: flex;
         gap: 20px;
-        justify-content: space-between;
-        @media (max-width:600px) {
+
+        @media (max-width: 600px) {
             display: none;
         }
-        &_btn{
-            display: flex;
+
+        &_btn {
             color: #BC9CFF;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: #7d66ad;
+            }
         }
     }
-    &__btn{
+
+    &__btn {
         background-color: #BC9CFF;
         padding: 10px 20px;
         border-radius: 15px;
         color: white;
-        transition: all 500ms ease; 
-        @media (max-width:600px) {
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        @media (max-width: 600px) {
             display: none;
         }
-        &:hover{
-            background: rgba(0,0,0,0);
-	        color: #7d66ad;
-	        box-shadow: inset 0 0 0 3px #7d66ad;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0);
+            color: #7d66ad;
+            box-shadow: inset 0 0 0 3px #7d66ad;
         }
-    }// BURGER
+    }
+
+    // Бургер-меню
     &__menu_btn_burger {
         width: 30px;
         height: 30px;
         position: relative;
-        z-index:2;
+        z-index: 2;
         overflow: hidden;
         display: none;
-        @media (max-width:600px) {
+        cursor: pointer;
+
+        @media (max-width: 600px) {
             display: block;
         }
-    }
-    
-    &__menu_btn_burger .bar {
-        width: 30px;
-        height: 4px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        border-radius: 4px;
-        transform: translate(-50%, -50%);
-        background-color: #7d66ad;
-        transition: all 0.3s ease-in-out;
-    }
-    
-    &__menu_btn_burger .bar:nth-of-type(2) {
-        top: calc(50% - 9px);
-    }
-    &__menu_btn_burger .bar:nth-of-type(3) {
-        top: calc(50% + 9px);
-    }
-    
-  
-    &__menu_btn_burger.active .bar:nth-of-type(1) {
-      display: none;
-    }
-    &__menu_btn_burger.active .bar:nth-of-type(2) {
-      top: 50%;
-      transform: translate(-50%, 0%) rotate(45deg);  
-    }
-    &__menu_btn_burger.active .bar:nth-of-type(3) {
-      top: 50%;
-      transform: translate(-50%, 0%) rotate(-45deg); 
+
+        .bar {
+            width: 30px;
+            height: 4px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 4px;
+            transform: translate(-50%, -50%);
+            background-color: #7d66ad;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .bar:nth-of-type(2) {
+            top: calc(50% - 9px);
+        }
+
+        .bar:nth-of-type(3) {
+            top: calc(50% + 9px);
+        }
+
+        &.active .bar:nth-of-type(1) {
+            display: none;
+        }
+
+        &.active .bar:nth-of-type(2) {
+            top: 50%;
+            transform: translate(-50%, 0%) rotate(45deg);
+        }
+
+        &.active .bar:nth-of-type(3) {
+            top: 50%;
+            transform: translate(-50%, 0%) rotate(-45deg);
+        }
     }
 }
 
-.nav{
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	padding: 15px;
-    background: #BC9CFF;
-	transform: translateX(100%);
-	transition: transform 0.5s; 
-    z-index: 1;
-    &__link{
-        
-        color: white;
-    }
-    &__link-btn{
-        background-color: #7d66ad;
-        padding: 20px 30px;
-        border-radius: 10px;
-        color: white;
-        position: relative;
-        top: 20px;
+// Модальное окно (бургер-меню)
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+
+    &.hide {
+        opacity: 0;
+        pointer-events: none;
     }
 }
 
-.nav.active {
-	transform: translateX(0);
-}
-
-.nav .nav__list_item {
-	list-style-type: none;
-    margin-bottom: 40px;
-}
-
-//BURGER BTN
-
-.section__title {
+.modalContent {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 300px;
     text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  .section__button {
-    background-color: #7d66ad;
-    border: none;
-    border-radius: 15px;
-    color: rgb(255, 255, 255);
-    font-weight: 700;
-    padding: 10px 20px;
+    position: relative;
+}
+
+.modalClose {
+    position: absolute;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
-    outline: 2px solid transparent;
-    outline-offset: 3px;
-    transition: background-color .2s ease-in-out, color .2s ease-in-out;
-    &:hover{
-        color: #000;
-    }
-    @media (max-width: 800px) {
-        display: block;
+    font-size: 20px;
+    color: #7d66ad;
+}
+
+.modalLink {
+    display: block;
+    margin: 15px 0;
+    color: #7d66ad;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: #BC9CFF;
     }
 }
-  
-  .section__button:focus_visible {
-    outline-color: yellow;
-  }

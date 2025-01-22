@@ -6,7 +6,7 @@ import SearchFilter from '../../components/serchFilter/SearchFilter'
 const Attraction = () => {
   return (
     <div>
-      <main className={s.card}>
+        <main className={s.card}>
            
            <div className={s.wrap}></div>
            <div className={s.content__container}>
@@ -21,22 +21,20 @@ const Attraction = () => {
                    <div className={s.find__finder}>
                        <h2 className={s.find__sub_title}>Все достопремичательности</h2>
                        <div className={s.find__block}>
-                           
                            <SearchFilter />
                        </div>
                    </div>
                    <section className={s.comment}>
                        <div className={s.comment__container}>
                            <div className={s.comment__wrap}>
-                               <h2 className={s.comment__title}>Отзывы</h2>
                                <div className={s.comment__content}>
                                </div>
-                           </div>
-                       </div>
-                   </section>
-               </div>
-           </section>
-       </main>
+                             </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
     </div>
   )
 }

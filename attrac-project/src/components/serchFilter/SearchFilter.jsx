@@ -1,27 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import s from './searchfilter.module.scss';
 
+const API_URL = 'https://672dfd95fd89797156449049.mockapi.io/Monument';
+
+const fetchData = async ({ queryKey }) => {
+  const [, searchQuery, selectedCategory] = queryKey;
+  const url = new URL(API_URL);
+
+  if (searchQuery) {
+    url.searchParams.append('title', searchQuery);
+  }
+  if (selectedCategory) {
+    url.searchParams.append('filter', selectedCategory);
+  }
+
+  const response = await fetch(url);
+  return response.json();
+};
+
 const SearchFilter = () => {
-  const [content, setContent] = useState([]); 
-  const [searchQuery, setSearchQuery] = useState(''); 
-  const [selectedCategory, setSelectedCategory] = useState(''); 
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
 
-  useEffect(() => {
-    const fetchData = async () => {
-        const response = await fetch('https://672dfd95fd89797156449049.mockapi.io/Monument');
-        const data = await response.json();
-        setContent(data);
-    };
-    fetchData();
-  }, []);
-
-  const filterCards = () => {
-    return content.filter((item) => {
-      const categoryMatch = !selectedCategory || (item.filter && item.filter.includes(selectedCategory));
-      const titleMatch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
-      return categoryMatch && titleMatch;
-    });
-  };
+  const {
+    data: content = [],
+    isLoading,
+  } = useQuery({
+    queryKey: ['monuments', searchQuery, selectedCategory],
+    queryFn: fetchData,
+  });
 
   const handleCardClick = (item) => {
     const params = new URLSearchParams({
@@ -33,6 +41,10 @@ const SearchFilter = () => {
     });
     window.location.href = `info.html?${params}`;
   };
+
+  if (isLoading) {
+    return <div className={s.loading}>Загрузка...</div>;
+  }
 
   return (
     <div className={s.find__block_card}>
@@ -60,7 +72,7 @@ const SearchFilter = () => {
         </select>
       </div>
 
-      {filterCards().map((item) => (
+      {content.map((item) => (
         <section
           key={item.id}
           className={s.card__pag}

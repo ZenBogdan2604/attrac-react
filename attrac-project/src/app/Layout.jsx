@@ -1,7 +1,7 @@
 import { Link, Outlet } from "react-router"
 import { Footer } from "../components/footer/Footer"
 import { Header } from "../components/header/Header"
-import { useState } from "react"
+import { Fragment, useState } from "react"
 import s from './layout.module.scss'
 
 
@@ -12,10 +12,10 @@ export const Layout = () => {
         setIsDark(!isDark);
     }
     return( 
-    <div className={isDark ? `${s.light}` : `${s.dark}`}>
+    <div className={`wrapper  ${isDark ? s.light : s.dark}`}>
         <Link className={s.button_to_dark} onClick={onClickHandler}>Переключить тему</Link>
         <Header />
-        <main >
+        <main className={s.main}>
             <Outlet />
         </main>
         <Footer />

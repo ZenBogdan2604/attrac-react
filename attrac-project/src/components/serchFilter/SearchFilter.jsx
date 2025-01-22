@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router';
 import s from './searchfilter.module.scss';
 
 const API_URL = 'https://672dfd95fd89797156449049.mockapi.io/Monument';
 
 const fetchData = async ({ queryKey }) => {
-  const [, searchQuery, selectedCategory] = queryKey;
+  const [, searchQuery, selectedCategory] = queryKey;//деструкторизация 
   const url = new URL(API_URL);
 
   if (searchQuery) {
@@ -22,11 +23,9 @@ const fetchData = async ({ queryKey }) => {
 const SearchFilter = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
+  const navigate = useNavigate();
 
-  const {
-    data: content = [],
-    isLoading,
-  } = useQuery({
+  const {data: content = [],isLoading} = useQuery({
     queryKey: ['monuments', searchQuery, selectedCategory],
     queryFn: fetchData,
   });
@@ -39,7 +38,7 @@ const SearchFilter = () => {
       map: item.map,
       addres: item.addres,
     });
-    window.location.href = `info.html?${params}`;
+    navigate(`/card-info?${params}`);
   };
 
   if (isLoading) {

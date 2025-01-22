@@ -27,13 +27,15 @@ const Pagination = () => {
   });
 
   useEffect(() => {
-    const fetchTotalItems = async () => {
-      const totalItems = await getAllData();
-      setTotalPages(Math.ceil(totalItems / itemsPerPage)); 
-    };
+   
 
     fetchTotalItems();
   }, []);
+
+  const fetchTotalItems = async () => {
+    const totalItems = await getAllData();
+    setTotalPages(Math.ceil(totalItems / itemsPerPage)); 
+  };
 
   if (isLoading) {
     return <div className={s.loading}>Loading...</div>;
@@ -53,9 +55,8 @@ const Pagination = () => {
           </section>
         ))}
       </div>
-
       <div className={s.pagination}>
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (// создаёт сама массив и из данных которые 
           <button
             key={page}
             className={`${s.paginationButton} ${currentPage === page ? s.active : ''}`}

@@ -1,0 +1,48 @@
+.cardInfo {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .cardImg {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .cardTitle {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+  
+  .cardText {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .cardMap {
+    margin: 20px 0;
+  }
+  
+  .cardAdd {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .backBtn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .backBtn:hover {
+    background-color: #0056b3;
+  }

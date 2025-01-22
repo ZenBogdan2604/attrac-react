@@ -6,7 +6,7 @@ import Modal from "../../components/modal/Modal";
 export const Contact = () => {
     return(
         <>
-            <main className={s.contacts}>
+            <section className={s.contacts}>
                 <div className={s.contacts__container}>
                     <div className={s.contacts__wrap}>
                         <div className={s.contacts__block}>
@@ -16,7 +16,7 @@ export const Contact = () => {
                         </div>
                     </div>
                 </div>
-            </main>
+            </section>
         </>
     )
 }

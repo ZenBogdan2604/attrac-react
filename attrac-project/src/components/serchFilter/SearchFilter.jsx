@@ -6,7 +6,7 @@ import s from './searchfilter.module.scss';
 const API_URL = 'https://672dfd95fd89797156449049.mockapi.io/Monument';
 
 const fetchData = async ({ queryKey }) => {
-  const [, searchQuery, selectedCategory] = queryKey;//деструкторизация 
+  const [, searchQuery, selectedCategory] = queryKey;
   const url = new URL(API_URL);
 
   if (searchQuery) {

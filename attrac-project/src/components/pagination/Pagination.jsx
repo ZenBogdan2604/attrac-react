@@ -27,10 +27,8 @@ const Pagination = () => {
   });
 
   useEffect(() => {
-   
-
     fetchTotalItems();
-  }, []);
+  }, []);// массив зависимостей
 
   const fetchTotalItems = async () => {
     const totalItems = await getAllData();
@@ -56,7 +54,7 @@ const Pagination = () => {
         ))}
       </div>
       <div className={s.pagination}>
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (// создаёт сама массив и из данных которые 
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
           <button
             key={page}
             className={`${s.paginationButton} ${currentPage === page ? s.active : ''}`}

@@ -41,7 +41,6 @@ export const Header = () => {
                 </div>
             </header>
 
-            {/* Бургер-меню */}
             <div className={`${s.modal} ${isMenuOpen ? '' : s.hide}`}>
                 <div className={s.modalContent}>
                     <label id={s.modalClose} onClick={closeMenu}>&#10006;</label>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router';
-import { Layout } from './layout';
+import { Layout } from './Layout.jsx';
 import { Home } from '../pages/home/Home.jsx';
 import { Contact } from '../pages/contacts/Contact.jsx';
 import Attraction from '../pages/attractions/Attraction.jsx';

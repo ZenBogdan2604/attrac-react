@@ -2,6 +2,7 @@ import React from 'react'
 import s from './attraction.module.scss'
 import Pagination from '../../components/pagination/Pagination'
 import SearchFilter from '../../components/serchFilter/SearchFilter'
+import CommentList from '../../components/comments/Comments'
 
 const Attraction = () => {
   return (
@@ -28,6 +29,7 @@ const Attraction = () => {
                        <div className={s.comment__container}>
                            <div className={s.comment__wrap}>
                                <div className={s.comment__content}>
+                                <CommentList />
                                </div>
                              </div>
                         </div>

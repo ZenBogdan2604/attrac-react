@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Route, Routes } from 'react-router';
 import { Layout } from './Layout.jsx';
 import { Home } from '../pages/home/Home.jsx';
@@ -15,6 +14,8 @@ function App() {
           <Route path="contacts" element={<Contact />} />
           <Route path="attractions" element={<Attraction />} />
           <Route path="card-info" element={<CardInfo />} />
+          {/* Добавьте маршрут для /attrac-react/ */}
+          <Route path="attrac-react" element={<Attraction />} />
         </Route>
       </Routes>
     </>

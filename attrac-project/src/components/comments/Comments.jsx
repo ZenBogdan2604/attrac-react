@@ -2,11 +2,10 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import s from './comments.module.scss'; 
 
+const API_URL = 'https://672dfd95fd89797156449049.mockapi.io/comment'
+
 const fetchComments = async () => {
-  const response = await fetch('https://672dfd95fd89797156449049.mockapi.io/comment');
-  if (!response.ok) {
-    throw new Error('Ошибка при загрузке комментариев');
-  }
+  const response = await fetch(API_URL);
   return response.json();
 };
 
@@ -40,3 +39,4 @@ const CommentList = () => {
 };
 
 export default CommentList;
+
